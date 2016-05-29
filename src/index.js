@@ -5,7 +5,7 @@ class App extends Component {
   render() {console.log('asd');
 
     return (
-      <div>Hello World</div>
+      <div>Hello World Watched</div>
     );
   }
 }
