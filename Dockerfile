@@ -2,7 +2,8 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/baseimage:0.9.15
+FROM phusion/baseimage:0.9.18
+
 
 RUN sudo apt-get update
 RUN apt-get install -yq nginx make
@@ -16,14 +17,14 @@ RUN mkdir /srv/www
 
 ADD deploy/default /etc/nginx/sites-available/default
 ADD deploy/nginx.conf /etc/nginx/nginx.conf
-ADD deploy/start.sh /tmp/start.sh
+ADD deploy/start.sh /etc/rc.local
 
-RUN chmod +x /tmp/start.sh
+RUN chmod +x /etc/rc.local
 
 ADD deploy/install_python.sh /tmp/install_python.sh
 RUN chmod +x /tmp/install_python.sh
 
-
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD . /srv/www
 WORKDIR /srv/www
@@ -35,4 +36,4 @@ RUN npm build
 
 EXPOSE 80
 
-CMD /tmp/start.sh
+CMD ["/sbin/my_init"]
