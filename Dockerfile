@@ -4,7 +4,7 @@ ADD . /srv/www
 WORKDIR /srv/www
 
 RUN npm install
-RUN npm run build
+RUN npm run prod
 
 EXPOSE 80
 
