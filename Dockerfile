@@ -3,7 +3,7 @@ FROM bobbykostadinov/nginx_node6
 ADD . /srv/www
 WORKDIR /srv/www
 
-RUN npm cache clean | npm install
+RUN npm install
 RUN npm run build
 
 EXPOSE 80
