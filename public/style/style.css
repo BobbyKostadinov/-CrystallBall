@@ -1,0 +1,9 @@
+.query-form .row{
+  margin: 35px 0;
+}
+.query-form label {
+  font-weight: bold;
+}
+.query-form-submit-row {
+  text-align: center;
+}
