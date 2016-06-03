@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import QueryForm from './query_form';
+import QueryForm from './../containers/query_form';
+import Result from './../containers/result';
 
 export default class Main extends Component {
   render() {
     return (
-      <QueryForm />
+      <div>
+        <QueryForm />
+        <Result />
+      </div>
     )
   }
 }

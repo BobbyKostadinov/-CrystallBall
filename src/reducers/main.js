@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import QueryFormReducer from './query_form';
 
 const mainReducer = combineReducers({
-  state: (state = {}) => state
+  queryForm: QueryFormReducer
 });
 
 export default mainReducer;
