@@ -3,21 +3,24 @@ import { connect } from 'react-redux'
 
 class Result extends Component {
   render() {
-    if (!this.props.activityDate) {
+    if (!this.props.location) {
       return (
         <div>Well ... submit the form first</div>
       );
     }
     return (
-      <div>Form submited. Activity: {this.props.activity} and activity date: {this.props.activityDate}</div>
+      <div>Form submited; Location: {this.props.location}; Good for you</div>
     );
   }
 }
 
-const mapStateToProps = ( {queryForm} ) => {
+const mapStateToProps = ( {result} ) => {
+  if (!result) {
+    return {};
+  }
+
   return {
-    activity: queryForm.activity,
-    activityDate: queryForm.activityDate
+    location: result.city.name,
   }
 }
 

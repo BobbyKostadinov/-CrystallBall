@@ -7,6 +7,7 @@ class QueryForm extends Component {
     super(props);
 
     this.state = {
+      location: props.location,
       activity: props.activity,
       activityDate: props.activityDate
     }
@@ -41,11 +42,21 @@ class QueryForm extends Component {
     return (
       <form className="query-form" onSubmit={ (event) => { event.preventDefault(); this.props.onSubmit(this.state);  }}>
         <div className="row form-group">
-          <div className="col-md-6">
+          <div className="col-md-4">
+            <label for="query-form-location">Where are you?</label>
+            <input
+              id="query-form-location"
+              type="text"
+              className="form-control"
+              value={this.state.location}
+              onChange={(event) => this.setState({location: event.target.value})}
+            />
+          </div>
+          <div className="col-md-4">
             <label for="query-form-activity">What are you up to?</label>
             {this.renderActivitySelector()}
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <label for="query-form-activity-date">When ?</label>
             {this.renderTimeSelector()}
           </div>
@@ -58,20 +69,13 @@ class QueryForm extends Component {
   }
 }
 
-const mapStateToProps = ( {queryForm} ) => {
-  return {
-    activity: queryForm.activity,
-    activityDate: queryForm.activityDate
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (state) => dispatch(formSubmit(state.activity, state.activityDate))
+    onSubmit: (state) => dispatch(formSubmit(state))
   }
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(QueryForm);

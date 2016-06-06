@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import QueryFormReducer from './query_form';
+import FormSubmitReducer from './form_submit';
 
 const mainReducer = combineReducers({
-  queryForm: QueryFormReducer
+  result: FormSubmitReducer
 });
 
 export default mainReducer;
